@@ -3,7 +3,7 @@
 *
 * (c) Peter Riša 2019
 * 
-* riadenie ohrevu vody cez slnečný kolektor
+* Riadenie ohrevu vody cez slnečný kolektor
 */
 
 // knižnice pre komunikáciu s teplomermi Dallas DS1820
@@ -22,10 +22,10 @@
 
 // konštanty pre zapnutie ohrevu
 #define TEPLOTA_MAX 45.0
-#define TEPLOTA_VIAC 5.0
+#define TEPLOTA_VIAC 6.0
 #define TEPLOTA_MENEJ 3.0
 
-// koľko môže byť DS18S20 teplomerov pripojených
+// koľko môže byť DS1820 teplomerov pripojených
 #define MAX_DS1820_SENSORS 5
 // pole teplôt      
 // teplota[0] = T1 - teplota kolektora
@@ -33,12 +33,12 @@
 // teplota[2] = T3 - teplota okolia
 float teplota[MAX_DS1820_SENSORS]; 
 
-// definovanie vstupov a výstupov arduina
+// definovanie vstupov a výstupov Arduina
 int relayPin = 3; // relé je na pine 3
-int num_temp = 0; //pocet teplomerov pripojenych
-// vytvoření instance oneWireDS z knihovny OneWire
+int num_temp = 0; //počet pripojenych teplomerov
+// vytvorenie inštalácie oneWireDS z knižnice OneWire
 OneWire  oneWireDS(13);  // teplomery sú na pine 13
-// vytvoření instance senzoryDS z knihovny DallasTemperature
+// vytvorenie inštaláci senzoryDS z knižnice DallasTemperature
 DallasTemperature senzoryDS(&oneWireDS);
 
 byte addr[MAX_DS1820_SENSORS][8];
@@ -46,7 +46,7 @@ char buf[20];
 // definovanie rozhrania displeja (rs, enable, d4, d5, d6, d7)
 LiquidCrystal lcd(1, 2, 4, 5, 6, 7);
 
-// na začiatok čerpadlo stojí
+// na začiatku čerpadlo stojí
 int cerpadlo = CERPADLO_STOP;
     
 // priprav všetko pred spustením regulácie
@@ -55,14 +55,14 @@ void setup() {
     // najprv predpokladame, že čerpadlo nejde
     cerpadlo = CERPADLO_STOP;
 
-    // iniciacia rele modulu
+    // iniciácia relé modulu
     pinMode(relayPin, OUTPUT);  //Set pin for output
     digitalWrite(relayPin, HIGH);  // HIGH is off, LOW is on
 
     // začni komunikovať s displejom
     lcd.begin(LCD_WIDTH, LCD_HEIGHT); 
 
-    //napis uvodny text
+    //napíš úvodny text
     lcd.setCursor(0,0); // riadok hore
     lcd.print("(c) Peter Risa");
     lcd.setCursor(0,1); // riadok dole
@@ -135,13 +135,13 @@ void loop() {
         digitalWrite(relayPin, HIGH);
     }
 
-    //zobraz teplotu na displej uloz ich do pola teplot
+    //zobraz teplotu na displej a ulož ich do pola teplôt
     for (sensor=0;sensor < num_temp;sensor++) {
         lcd.setCursor(0,1);
         sprintf(buf, "C: %d, T%d: ",cerpadlo, sensor+1);
         lcd.print(buf);
         lcd.print(teplota[sensor]);
-        delay(1000);
+        delay(1500);
     }
 
 }
