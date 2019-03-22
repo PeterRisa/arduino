@@ -1,8 +1,6 @@
 
-# Školské arduino projekty Peter Riša
+# Školský projekt ohrevu vody pomocou kolektora by Peter Riša
 
 ## Kolektor
- - Návrh solárneho kolektora na ohrev teplej vody.
+ - Návrh solárneho kolektora na ohrev teplej vody, ovládaného pomocou Arduina
 
-## Smart dom
- - Návrh domu riadeného cez WEB aplikáciu
