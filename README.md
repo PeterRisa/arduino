@@ -1,6 +1,15 @@
 
-# Školský projekt na ohrev vody by Peter Riša
+# Školský projekt na ohrev vody 
 
-## Kolektor
- - Návrh solárneho kolektora na ohrev teplej vody, ovládaného pomocou Arduina
+## Program na automatiáciu ohrevu vody
+   Funguje na princípe zapínania/vypínania čerpadla na základe vypočítavania rozdielu teploty panelu a teploty vody
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ###by Peter Riša
 
